@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\..\..\..\..\Downloads\bccrypto-csharp-1.8.1-bin\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,9 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="License3j.cs" />
+    <Compile Include="licensor\encrypt\PGPHelper.cs" />
+    <Compile Include="licensor\ExtendedLicense.cs" />
+    <Compile Include="licensor\HardwareBinder.cs" />
+    <Compile Include="licensor\hardware\HashCalculator.cs" />
+    <Compile Include="licensor\hardware\InterfaceSelector.cs" />
+    <Compile Include="licensor\hardware\NetworkInterfaceData.cs" />
+    <Compile Include="licensor\hardware\UUIDCalculator.cs" />
+    <Compile Include="licensor\HttpHandler.cs" />
+    <Compile Include="licensor\License.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\CommandLineProcessor.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
