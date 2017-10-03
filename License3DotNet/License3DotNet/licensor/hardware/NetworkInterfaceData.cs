@@ -7,10 +7,14 @@ using System.Net.Sockets;
 
 namespace License3DotNet.licensor.hardware
 {
+    /**
+     * A data class holding the network interface data.
+     *
+     */
     class NetworkInterfaceData
     {
         public String name;
-        byte[] hwAddress;
+        public byte[] hwAddress;
 
         private NetworkInterfaceData(NetworkInterface networkInterface)
         {
@@ -21,6 +25,15 @@ namespace License3DotNet.licensor.hardware
             } catch(SocketException e) {
                 throw new SystemException(e.ToString(), e);
             }
+        }
+
+        public static List<NetworkInterfaceData> gatherUsing(InterfaceSelector selector)
+        {
+            // TODO: port to C#
+            //return Collections.list(NetworkInterface.getNetworkInterfaces()).stream()
+            //.filter(selector::usable)
+            //.map(NetworkInterfaceData::new).collect(Collectors.toList());
+            return null;
         }
     }
 }
