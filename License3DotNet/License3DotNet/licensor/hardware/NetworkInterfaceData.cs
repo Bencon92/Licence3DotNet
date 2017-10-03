@@ -5,12 +5,12 @@ using System.Text;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
+/**
+ * A data class holding the network interface data.
+ *
+ */
 namespace License3DotNet.licensor.hardware
 {
-    /**
-     * A data class holding the network interface data.
-     *
-     */
     class NetworkInterfaceData
     {
         public String name;
