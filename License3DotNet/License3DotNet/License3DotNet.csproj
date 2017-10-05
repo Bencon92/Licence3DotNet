@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\..\..\..\..\..\Downloads\bccrypto-csharp-1.8.1-bin\BouncyCastle.Crypto.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\bccrypto-csharp-1.8.1-bin\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

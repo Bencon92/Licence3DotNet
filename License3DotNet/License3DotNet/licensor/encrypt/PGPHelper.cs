@@ -7,6 +7,8 @@ using Org.BouncyCastle.Bcpg.Sig;
 using Org.BouncyCastle.Bcpg.Attr;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Operators;
+using Org.BouncyCastle.Utilities.Zlib;
+using Org.BouncyCastle.Crypto.IO;
 
 namespace License3DotNet.licensor.encrypt
 {
@@ -37,6 +39,29 @@ namespace License3DotNet.licensor.encrypt
         private PgpPrivateKey extractPGPPrivateKey(char[] keyPassPhrase)
         {
             
+        }
+
+        private void setHashedSubpackets(PgpSignatureGenerator signatureGenerator) 
+        {
+            IEnumerator<string> it = (IEnumerator<string>)key.PublicKey.GetUserIds().GetEnumerator();
+            while (it.MoveNext())
+            {
+                PgpSignatureSubpacketGenerator generator = new PgpSignatureSubpacketGenerator();
+                generator.SetSignerUserId(false, it.Current);
+                signatureGenerator.SetHashedSubpackets(generator.Generate());
+            }
+        }
+
+        private void init(PgpSignatureGenerator signatureGenerator, PgpPrivateKey pgpPrivKey)
+        {
+            signatureGenerator.InitSign(PgpSignature.BinaryDocument, pgpPrivKey);
+            setHashedSubpackets(signatureGenerator);
+        }
+
+        private PgpCompressedDataGenerator compressedDataGenerator() 
+        {
+            // TODO: not the same in the .net library, search alternative
+            // return new PgpCompressedDataGenerator(PgpCompressedData.ZLIB);
         }
     }
 }
