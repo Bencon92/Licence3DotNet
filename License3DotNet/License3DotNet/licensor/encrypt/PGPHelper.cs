@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Org.BouncyCastle.Bcpg.OpenPgp;
-using Org.BouncyCastle.Bcpg.Sig;
-using Org.BouncyCastle.Bcpg.Attr;
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Operators;
-using Org.BouncyCastle.Utilities.Zlib;
-using Org.BouncyCastle.Crypto.IO;
+using System.IO;
 
 namespace License3DotNet.licensor.encrypt
 {
@@ -62,6 +58,26 @@ namespace License3DotNet.licensor.encrypt
         {
             // TODO: not the same in the .net library, search alternative
             // return new PgpCompressedDataGenerator(PgpCompressedData.ZLIB);
+        }
+
+        // TODO: Porting of Outputstream
+        private void encode(string licensePlain, PgpSignatureGenerator signatureGenerator, MemoryStream outputStream) {
+        {
+            PgpLiteralDataGenerator literalDataGenerator = new PgpLiteralDataGenerator();
+        }
+
+        public void setHashAlgorithm(int hashAlgorithm)
+        {
+            this.hashAlgorithm = hashAlgorithm;
+        }
+
+        // Cannot find BCPGOutputstream, searching for alternatives
+        public byte[] encodeLicense(string keyPassPhraseString, string licensePlain)
+        {
+            MemoryStream mem = new MemoryStream();
+            StreamWriter writer = new StreamWriter(mem);
+            PgpCompressedDataGenerator generator = compressedDataGenerator();
+            
         }
     }
 }
